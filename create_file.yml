@@ -2,7 +2,7 @@
 ---
 - name: Create a test file on the target host
   hosts: all
-  become: yes  # sudo 권한으로 파일 생성 (경로에 따라 필요 없을 수도 있음)
+  #become: yes  # sudo 권한으로 파일 생성 (경로에 따라 필요 없을 수도 있음)
   
   tasks:
     - name: Create a file with content from Go backend
