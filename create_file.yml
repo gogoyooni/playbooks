@@ -8,6 +8,6 @@
     - name: Create a file with content from Go backend
       ansible.builtin.copy:
         # Go 코드에서 extra_vars로 전달할 변수들
-        dest: "{{ target_filename }}"
+        dest: "~/awx_test_file.txt"
         content: "{{ file_content }}"
         mode: '0644'
