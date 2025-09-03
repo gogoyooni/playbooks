@@ -6,7 +6,7 @@
   tasks:
     - name: Create a simple text file with content
       ansible.builtin.copy:
-        dest: "/ansible-test-directory/awx_test.txt" # 생성될 파일의 경로와 이름
+        dest: "/home/tomcat/awx_test.txt" # 생성될 파일의 경로와 이름
         content: |
           Hello from AWX!
           This file was created automatically.
