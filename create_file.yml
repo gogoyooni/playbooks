@@ -1,13 +1,16 @@
-# create_file.yml
 ---
-- name: Create a test file on the target host
+- name: Create a test file on remote server
   hosts: all
-  become: yes  # sudo 권한으로 파일 생성 (경로에 따라 필요 없을 수도 있음)
-  
+  become: no # tomcat 사용자의 홈 디렉터리에 생성하므로 root 권한이 필요 없습니다.
+
   tasks:
-    - name: Create a file with content from Go backend
+    - name: Create a simple text file with content
       ansible.builtin.copy:
-        # Go 코드에서 extra_vars로 전달할 변수들
-        dest: "~/awx_test_file.txt"
-        content: "{{ file_content }}"
-        mode: '0644'
+        dest: "/ansible-test-directory/awx_test.txt" # 생성될 파일의 경로와 이름
+        content: |
+          Hello from AWX!
+          This file was created automatically.
+          Onboarding successful.
+        owner: tomcat   # 파일 소유자
+        group: tomcat   # 파일 그룹
+        mode: '0644'    # 파일 권한 (읽기/쓰기)
